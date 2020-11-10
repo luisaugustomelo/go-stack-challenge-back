@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import api from './services/api';
 
 import "./styles.css";
 
 function App() {
+
+  const repository = [];
   async function handleAddRepository() {
     // TODO
   }
@@ -10,6 +13,14 @@ function App() {
   async function handleRemoveRepository(id) {
     // TODO
   }
+
+  useEffect(() => {
+    api.get('/repositories').then(response => {
+      console.log(response)
+    }).catch(error => {
+      console.log(error)
+    })
+  }, [])
 
   return (
     <div>
